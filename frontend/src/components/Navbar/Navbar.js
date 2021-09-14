@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import {
   Container,
@@ -20,7 +20,6 @@ import Uk from "../../assets/img/uk.svg";
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [t, i18n] = useTranslation("global");
-  const [lang, setlang] = useState("");
   return (
     <Container>
       <Wrapper>
@@ -43,7 +42,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           </MenuItem>
           <MenuItem>
             <ThemeIcon onClick={toggleTheme}>
-              {lang === "es" ? (
+              {theme === "default" ? (
                 <BiMoon color="white" onClick={toggleTheme} />
               ) : (
                 <BiSun color="yellow" onClick={toggleTheme} />
