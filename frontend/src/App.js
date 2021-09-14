@@ -1,9 +1,27 @@
 import React from "react";
-import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages";
 import { ThemeProvider } from "styled-components";
 import { useTheme } from "./hooks";
+import { I18nextProvider } from "react-i18next";
+import i18next from "i18next";
+import global_en from "./translations/en/global.json";
+import global_es from "./translations/es/global.json";
+
+i18next.init({
+  interpolation: { escapeValue: false },
+  lng: "es",
+  resources: {
+    es: {
+      global: global_es,
+    },
+    en: {
+      global: global_en,
+    },
+  },
+});
+
 /**
- * Esta es la configuración de nuestro temas
+ * Esta es la configuración de nuestro tema
  * aqui podrías agregar los que necesites y tener una
  * gran variedad para tus usuarios.
  */
@@ -33,9 +51,11 @@ const themes = {
 function App() {
   const [theme, toggleTheme] = useTheme();
   return (
-    <ThemeProvider theme={themes[theme]}>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-    </ThemeProvider>
+    <I18nextProvider i18n={i18next}>
+      <ThemeProvider theme={themes[theme]}>
+        <Home theme={theme} toggleTheme={toggleTheme} />
+      </ThemeProvider>
+    </I18nextProvider>
   );
 }
 

@@ -1,5 +1,7 @@
 {
   "navbar": {
-    "logo": "ENGLISH"
+    "logo": "English",
+    "register": "Register",
+    "login": "Sign in"
   }
 }

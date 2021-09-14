@@ -1,5 +1,7 @@
 {
   "navbar": {
-    "logo": "SPANISH"
+    "logo": "Español",
+    "register": "Creá tu cuenta",
+    "login": "Ingresá"
   }
 }

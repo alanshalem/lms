@@ -32,12 +32,12 @@ const Navbar = ({ theme, toggleTheme }) => {
         <Menu open={showMobileMenu}>
           <MenuItem>
             <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-              HOME
+              {t("navbar.register")}
             </MenuItemLink>
           </MenuItem>
           <MenuItem>
             <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-              HOME
+              {t("navbar.login")}
             </MenuItemLink>
           </MenuItem>
           <MenuItem>
@@ -66,7 +66,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                   src={Arg}
                   onClick={() => {
                     i18n.changeLanguage("es");
-                    console.log(i18n.language);
+                    // console.log(i18n.language);
                   }}
                 />
               ) : (
@@ -74,7 +74,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                   src={Uk}
                   onClick={() => {
                     i18n.changeLanguage("en");
-                    console.log(i18n.language);
+                    // console.log(i18n.language);
                   }}
                 />
               )}
