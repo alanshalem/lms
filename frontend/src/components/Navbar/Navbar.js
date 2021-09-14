@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Container,
@@ -13,37 +13,47 @@ import {
   Flag,
 } from "./Navbar.elements";
 
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { BiSun, BiMoon } from "react-icons/bi";
 import Arg from "../../assets/img/arg.svg";
 import Uk from "../../assets/img/uk.svg";
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [t, i18n] = useTranslation("global");
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <Container>
       <Wrapper>
         <LogoContainer>{t("navbar.logo")}</LogoContainer>
-        <MobileIcon>
-          <FaBars />
+
+        <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
+          {showMobileMenu ? <FaTimes /> : <FaBars />}
         </MobileIcon>
-        <Menu>
+        <Menu open={showMobileMenu}>
           <MenuItem>
-            <MenuItemLink>HOME</MenuItemLink>
+            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+              HOME
+            </MenuItemLink>
           </MenuItem>
           <MenuItem>
-            <MenuItemLink>HOME</MenuItemLink>
+            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+              HOME
+            </MenuItemLink>
           </MenuItem>
           <MenuItem>
-            <MenuItemLink>HOME</MenuItemLink>
+            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+              HOME
+            </MenuItemLink>
           </MenuItem>
           <MenuItem>
-            <MenuItemLink>HOME</MenuItemLink>
+            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+              HOME
+            </MenuItemLink>
           </MenuItem>
           <MenuItem>
             <ThemeIcon onClick={toggleTheme}>
               {theme === "default" ? (
-                <BiMoon color="white" onClick={toggleTheme} />
+                <BiMoon color="black" onClick={toggleTheme} />
               ) : (
                 <BiSun color="yellow" onClick={toggleTheme} />
               )}
