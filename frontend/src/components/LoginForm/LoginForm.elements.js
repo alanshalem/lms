@@ -9,7 +9,7 @@ const jump = keyframes`
   }
 `;
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.div`
   background: ${({ theme }) => theme.colors.background};
   display: flex;
   justify-content: center;
@@ -21,7 +21,6 @@ export const Wrapper = styled.section`
 export const Form = styled.form`
   margin: 0 auto;
   width: 100%;
-  max-width: 414px;
   padding: 1.3rem;
   display: flex;
   flex-direction: column;

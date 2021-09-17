@@ -7,6 +7,7 @@ import global_en from "./translations/en/global.json";
 import global_es from "./translations/es/global.json";
 import AppRouter from "./routers/AppRouter";
 import AuthProvider from "./auth/AuthProvider";
+// import GlobalStyle from "./components/GlobalStyle";
 
 i18next.init({
   interpolation: { escapeValue: false },

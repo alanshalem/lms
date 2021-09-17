@@ -12,6 +12,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import ProfilePage from "../pages/ProfilePage";
 import DashboardPage from "../pages/DashboardPage";
 import PrivateRoute from "./PrivateRoute";
+import Footer from "../components/Footer/Footer";
 
 const AppRouter = ({ theme, toggleTheme }) => {
   return (
@@ -28,6 +29,7 @@ const AppRouter = ({ theme, toggleTheme }) => {
         <Route exact path="/" component={HomePage} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
+      <Footer />
     </Router>
   );
 };

@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     /* justify-content: center; */
     /* align-content: center; */
     height: 100vh;
-    background-color: ${({ theme }) => theme.colors.background};
+
     transition: all 0.15s linear;
     margin: 0;
     font-family: Poppins;

@@ -10,6 +10,7 @@ export const Row = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const Title = styled.h1`
