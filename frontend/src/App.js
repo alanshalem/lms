@@ -1,6 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import { ThemeProvider } from "styled-components";
 import { useTheme } from "./hooks";
 import { I18nextProvider } from "react-i18next";
@@ -58,7 +56,6 @@ function App() {
       <I18nextProvider i18n={i18next}>
         <ThemeProvider theme={themes[theme]}>
           <AppRouter theme={theme} toggleTheme={toggleTheme} />
-          {/* <Home theme={theme} toggleTheme={toggleTheme} /> */}
         </ThemeProvider>
       </I18nextProvider>
     </AuthProvider>

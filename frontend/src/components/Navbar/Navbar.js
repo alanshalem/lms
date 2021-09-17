@@ -18,18 +18,32 @@ import { BiSun, BiMoon } from "react-icons/bi";
 import Arg from "../../assets/img/arg.svg";
 import Uk from "../../assets/img/uk.svg";
 
+import { Link } from "react-router-dom";
+
 const Navbar = ({ theme, toggleTheme }) => {
   const [t, i18n] = useTranslation("global");
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <Container>
       <Wrapper>
-        <LogoContainer>{t("navbar.logo")}</LogoContainer>
+        <LogoContainer>
+          <Link to="/">{t("navbar.logo")} </Link>
+        </LogoContainer>
 
         <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
           {showMobileMenu ? <FaTimes /> : <FaBars />}
         </MobileIcon>
         <Menu open={showMobileMenu}>
+          <MenuItem>
+            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+              HOME
+            </MenuItemLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+              HOME
+            </MenuItemLink>
+          </MenuItem>
           <MenuItem>
             <MenuItemLink
               to="/register"
@@ -44,16 +58,6 @@ const Navbar = ({ theme, toggleTheme }) => {
               onClick={() => setShowMobileMenu(!showMobileMenu)}
             >
               {t("navbar.login")}
-            </MenuItemLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-              HOME
-            </MenuItemLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-              HOME
             </MenuItemLink>
           </MenuItem>
           <MenuItem>

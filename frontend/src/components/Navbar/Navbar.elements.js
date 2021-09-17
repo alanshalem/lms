@@ -22,21 +22,9 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.2rem;
-  font-family: sans-serif;
-  p {
-    &:nth-child(2) {
-      color: #fff;
-    }
-    &:nth-child(3) {
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #e07924;
-    }
-  }
-  svg {
-    fill: #e07924;
-    margin-right: 0.5rem;
-  }
+  font-weight: 900;
+  font-family: "Poppins", sans-serif;
+  color: #9400d3;
 `;
 
 export const Menu = styled.ul`
@@ -46,7 +34,7 @@ export const Menu = styled.ul`
   justify-content: space-between;
   list-style: none;
   @media screen and (max-width: 960px) {
-    background-color: #23394d;
+    background-color: ${({ theme }) => theme.colors.background};
     position: absolute;
     top: 70px;
     left: ${({ open }) => (open ? "0" : "-100%")}; //Import
@@ -87,7 +75,7 @@ export const MenuItemLink = styled(LinkR)`
   transition: 0.5s all ease;
   &:hover {
     color: #fff;
-    background-color: #e0792a;
+    background-color: #64b2ff;
     transition: 0.5s all ease;
     div {
       svg {
@@ -103,7 +91,7 @@ export const MenuItemLink = styled(LinkR)`
     align-items: center;
     svg {
       display: none;
-      fill: #e0792a;
+      fill: #64b2ff;
       margin-right: 0.5rem;
     }
   }
@@ -176,7 +164,7 @@ export const MobileIcon = styled.div`
     align-items: center;
     cursor: pointer;
     svg {
-      fill: #e07924;
+      fill: #64b2ff;
       margin-right: 0.5rem;
     }
   }

@@ -1,7 +1,15 @@
 import React from "react";
+import Jumbotron from "../components/Jumbotron/Jumbotron";
+import RegisterForm from "../components/RegisterForm/RegisterForm";
 
 const RegisterPage = () => {
-  return <div>Register Page</div>;
+  return (
+    <>
+      <Jumbotron title="Registrate">
+        <RegisterForm />
+      </Jumbotron>
+    </>
+  );
 };
 
 export default RegisterPage;
