@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import axios from "axios";
 import PropTypes from "prop-types"; // ES6
-import {
-  Wrapper,
-  Form,
-  Label,
-  Input,
-  Button,
-  Text,
-} from "./RegisterForm.elements";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-const RegisterForm = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+import {
+  Button,
+  Form,
+  Input,
+  Label,
+  Text,
+  Wrapper,
+} from "./RegisterForm.elements";
 
-  const handleSubmit = (e) => {
+const RegisterForm = () => {
+  const [name, setName] = useState("Alan");
+  const [email, setEmail] = useState("alan@gmail.com");
+  const [password, setPassword] = useState("123456");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name, email, password);
+    // console.table([name, email, password]);
+    const { data } = await axios.post(`http://localhost:8000/api/register`);
+    console.log(`REGISTER RESPONSE`, data);
   };
 
   return (

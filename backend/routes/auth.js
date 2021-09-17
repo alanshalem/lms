@@ -6,6 +6,6 @@ const router = express.Router();
 import { register } from "../controllers/auth";
 
 //routes
-router.get("/register", register);
+router.post("/register", register);
 
 module.exports = router;

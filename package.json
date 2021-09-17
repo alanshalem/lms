@@ -1,0 +1,26 @@
+{
+  "name": "lms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "frontend": "cd ./frontend && npm start",
+    "backend": "cd ./backend && nodemon -r esm server.js",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanshalem/lms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanshalem/lms/issues"
+  },
+  "homepage": "https://github.com/alanshalem/lms#readme"
+}

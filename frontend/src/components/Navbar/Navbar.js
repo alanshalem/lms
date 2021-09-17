@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { BiMoon, BiSun } from "react-icons/bi";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Arg from "../../assets/img/arg.svg";
+import Uk from "../../assets/img/uk.svg";
 import {
   Container,
-  Wrapper,
+  Flag,
+  LangIcon,
   LogoContainer,
   Menu,
   MenuItem,
   MenuItemLink,
-  ThemeIcon,
-  LangIcon,
   MobileIcon,
-  Flag,
+  ThemeIcon,
+  Wrapper,
 } from "./Navbar.elements";
-
-import { FaBars, FaTimes } from "react-icons/fa";
-import { BiSun, BiMoon } from "react-icons/bi";
-import Arg from "../../assets/img/arg.svg";
-import Uk from "../../assets/img/uk.svg";
-
-import { Link } from "react-router-dom";
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [t, i18n] = useTranslation("global");
