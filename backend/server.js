@@ -3,7 +3,7 @@ import express from "express";
 //inporto cors
 import cors from "cors";
 //importo fs para cargar las routes
-import fs from "fs";
+import { readdirSync } from "fs";
 //importo cors para loggear las request HTTP
 const morgan = require("morgan");
 //importo dotenv para cargar las variables de entorno
@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 //mapeo todas mis rutas, leo el archivo routes y por cada ruta que exporto hago un app.use
-//
-fs.readdirSync("./routes").map((route) => {
+
+readdirSync("./routes").map((route) => {
   app.use("/api", require(`./routes/${route}`));
 });
 //port

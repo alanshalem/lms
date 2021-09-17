@@ -2,8 +2,10 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/register", (req, res) => {
-  res.send("ENDPOINT '/register'");
-});
+//controllers
+import { register } from "../controllers/auth";
+
+//routes
+router.get("/register", register);
 
 module.exports = router;
