@@ -1,11 +1,14 @@
 import React from "react";
-import Home from "./pages";
+import { BrowserRouter as Router } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 import { ThemeProvider } from "styled-components";
 import { useTheme } from "./hooks";
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 import global_en from "./translations/en/global.json";
 import global_es from "./translations/es/global.json";
+import AppRouter from "./routers/AppRouter";
+import AuthProvider from "./auth/AuthProvider";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -51,11 +54,14 @@ const themes = {
 function App() {
   const [theme, toggleTheme] = useTheme();
   return (
-    <I18nextProvider i18n={i18next}>
-      <ThemeProvider theme={themes[theme]}>
-        <Home theme={theme} toggleTheme={toggleTheme} />
-      </ThemeProvider>
-    </I18nextProvider>
+    <AuthProvider>
+      <I18nextProvider i18n={i18next}>
+        <ThemeProvider theme={themes[theme]}>
+          <AppRouter theme={theme} toggleTheme={toggleTheme} />
+          {/* <Home theme={theme} toggleTheme={toggleTheme} /> */}
+        </ThemeProvider>
+      </I18nextProvider>
+    </AuthProvider>
   );
 }
 

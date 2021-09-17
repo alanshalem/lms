@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link as LinkR } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -39,6 +40,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const Menu = styled.ul`
+  z-index: 999;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -68,7 +70,7 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const MenuItemLink = styled.a`
+export const MenuItemLink = styled(LinkR)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +80,9 @@ export const MenuItemLink = styled.a`
   font-family: sans-serif;
   font-size: 1rem;
   font-weight: 300;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   transition: 0.5s all ease;
   &:hover {

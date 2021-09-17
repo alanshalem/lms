@@ -3,5 +3,9 @@
     "logo": "Español",
     "register": "Creá tu cuenta",
     "login": "Ingresá"
+  },
+  "hero": {
+    "title": "Titulo español",
+    "paragraph": "parrafo español"
   }
 }

@@ -31,12 +31,18 @@ const Navbar = ({ theme, toggleTheme }) => {
         </MobileIcon>
         <Menu open={showMobileMenu}>
           <MenuItem>
-            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+            <MenuItemLink
+              to="/register"
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+            >
               {t("navbar.register")}
             </MenuItemLink>
           </MenuItem>
           <MenuItem>
-            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+            <MenuItemLink
+              to="/login"
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+            >
               {t("navbar.login")}
             </MenuItemLink>
           </MenuItem>
