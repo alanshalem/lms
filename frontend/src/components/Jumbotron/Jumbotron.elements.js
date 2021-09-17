@@ -16,5 +16,6 @@ export const Title = styled.h1`
   font-size: 60px;
   font-weight: 600;
   font-family: "Poppins";
+  text-align: center;
   color: ${({ theme }) => theme.colors.text};
 `;

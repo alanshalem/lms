@@ -81,3 +81,12 @@ export const Title = styled.h2`
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
 `;
+
+export const Text = styled.p`
+  max-width: 100%;
+  padding: 11px 13px;
+  font-size: 20px;
+  font-family: "Poppins";
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text}; ;
+`;
