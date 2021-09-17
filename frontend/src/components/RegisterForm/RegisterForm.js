@@ -69,6 +69,7 @@ const RegisterForm = () => {
 RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   pass: PropTypes.string.isRequired,
 };
 
