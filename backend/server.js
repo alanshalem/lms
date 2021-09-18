@@ -24,9 +24,11 @@ mongoose
   .catch((error) => console.log(`DB CONNECTION ERROR => ${error}`));
 
 //aplico middlewares utilizando app.use
-app.use(cors);
-//express.json() para mandar datos del frontend al backend como JSON
+app.use(cors());
+//express.json() /étodo incorporado en express para reconocer el objeto de solicitud entrante como un objeto JSON. Este metodo se llama, middleware
 app.use(express.json());
+//método incorporado en express para reconocer el objeto de solicitud entrante como cadenas o matrices
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 //mapeo todas mis rutas, leo el archivo routes y por cada ruta que exporto hago un app.use
@@ -38,6 +40,9 @@ readdirSync("./routes").map((route) => {
 
 const PORT = process.env.PORT || 8080;
 
+app.get("/", (req, res) => {
+  res.send("HOLA JUAN CARLOS!");
+});
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });
