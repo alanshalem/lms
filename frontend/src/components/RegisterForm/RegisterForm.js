@@ -13,13 +13,19 @@ import {
 
 const RegisterForm = () => {
   const [name, setName] = useState("Alan");
+  const [lastname, setLastname] = useState("Shalem");
   const [email, setEmail] = useState("alan@gmail.com");
   const [password, setPassword] = useState("123456");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.table([name, email, password]);
-    const { data } = await axios.post(`http://localhost:8000/api/register`);
+    const { data } = await axios.post(`http://localhost:8080/api/register`, {
+      name,
+      lastname,
+      email,
+      password,
+    });
     console.log(`REGISTER RESPONSE`, data);
   };
 
@@ -27,7 +33,7 @@ const RegisterForm = () => {
     <>
       <Wrapper>
         <Form autoComplete="off" onSubmit={handleSubmit}>
-          <Label for="name">Ingrese su Nombre de Usuario</Label>
+          <Label for="name">Ingrese su Nombre</Label>
           <Input
             type="text"
             name="name"
@@ -36,6 +42,17 @@ const RegisterForm = () => {
               setName(e.target.value);
             }}
             placeholder="Enter Name"
+            required
+          />
+          <Label for="name">Ingrese su Apellido</Label>
+          <Input
+            type="text"
+            name="lastname"
+            value={lastname}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            placeholder="Enter Last Name"
             required
           />
           <Label for="email">Ingrese su Email</Label>

@@ -40,9 +40,6 @@ readdirSync("./routes").map((route) => {
 
 const PORT = process.env.PORT || 8080;
 
-app.get("/", (req, res) => {
-  res.send("HOLA JUAN CARLOS!");
-});
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });

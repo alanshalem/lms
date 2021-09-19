@@ -29,7 +29,7 @@ const AppRouter = ({ theme, toggleTheme }) => {
         <Route exact path="/" component={HomePage} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };
