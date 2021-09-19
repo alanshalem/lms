@@ -50,7 +50,7 @@ const RegisterForm = () => {
             name="lastname"
             value={lastname}
             onChange={(e) => {
-              setName(e.target.value);
+              setLastname(e.target.value);
             }}
             placeholder="Enter Last Name"
             required
@@ -90,6 +90,7 @@ const RegisterForm = () => {
 RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   pass: PropTypes.string.isRequired,
 };

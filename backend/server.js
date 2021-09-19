@@ -20,8 +20,8 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("DB CONNECTED"))
-  .catch((error) => console.log(`DB CONNECTION ERROR => ${error}`));
+  .then(() => console.log("***DB CONNECTED***"))
+  .catch((error) => console.log(`***DB CONNECTION ERROR => ${error}***`));
 
 //aplico middlewares utilizando app.use
 app.use(cors());
@@ -41,5 +41,5 @@ readdirSync("./routes").map((route) => {
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
-  console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
+  console.log(`***SERVER IS RUNNING ON PORT ${PORT}***`);
 });
