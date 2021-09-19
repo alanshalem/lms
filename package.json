@@ -8,9 +8,12 @@
   },
   "devDependencies": {},
   "scripts": {
+    "install frontend": "cd ./frontend && npm install",
     "frontend": "cd ./frontend && npm start",
+    "install backend": "cd ./backend && npm install",
     "backend": "cd ./backend && nodemon -r esm server.js",
-    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "install all": "concurrenly \"npm run install frontend\" \"npm run install backend\""
   },
   "repository": {
     "type": "git",
