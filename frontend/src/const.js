@@ -1,0 +1,1 @@
+export const LOCALHOST_PUBLIC_API = process.env.REACT_APP_LOCALHOST_PUBLIC_API;
