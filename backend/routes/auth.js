@@ -1,11 +1,11 @@
-import express from "express";
+import express from 'express';
+//controllers
+import { register, login } from '../controllers/auth';
 
 const router = express.Router();
 
-//controllers
-import { register } from "../controllers/auth";
-
 //routes
-router.post("/register", register);
+router.post('/register', register);
+router.post('/login', login);
 
 module.exports = router;
