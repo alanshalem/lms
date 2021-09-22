@@ -1,9 +1,11 @@
 import axios from 'axios';
 import PropTypes from 'prop-types'; // ES6
-import React, { useState } from 'react';
-import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Context } from '../../context';
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import {
 	Button,
 	Form,
@@ -19,6 +21,16 @@ const RegisterForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
+
+	const { state, dispatch } = useContext(Context);
+	const { user } = state;
+
+	const router = useHistory();
+	useEffect(() => {
+		if (user !== null) {
+			router.push('/');
+		}
+	}, [user]);
 
 	// console.log(
 	// 	`LOCALHOST_PUBLIC_API
@@ -93,7 +105,7 @@ const RegisterForm = () => {
 						name="password"
 						value={password}
 						onChange={(e) => {
-							setPassword(e.target.password);
+							setPassword(e.target.value);
 						}}
 						placeholder="Enter Password"
 						required

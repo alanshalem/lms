@@ -1,8 +1,9 @@
 import axios from 'axios';
 import PropTypes from 'prop-types'; // ES6
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../context';
+import { useHistory } from 'react-router';
 import {
 	Button,
 	Form,
@@ -18,6 +19,21 @@ const LoginForm = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const [loading, setLoading] = useState(false);
+
+	//state
+	const { state, dispatch } = useContext(Context);
+	const { user } = state;
+
+	console.log('STATE', state);
+
+	//router
+	const router = useHistory();
+
+	useEffect(() => {
+		if (user !== null) {
+			router.push('/');
+		}
+	}, [user]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -36,20 +52,19 @@ const LoginForm = () => {
 				type: 'LOGIN',
 				payload: data,
 			});
+			//save in local storage
+			window.localStorage.setItem('user', JSON.stringify(data));
 			// toast(`LOGIN SUCCESSFUL.`);
 			toast.success(`LOGIN SUCCESSFUL.`);
 			setLoading(false);
+			//redirect
+			router.push('/');
 		} catch (error) {
 			// toast(error.response.data);
 			toast.error(error.response.data);
 			setLoading(false);
 		}
 	};
-
-	//state
-	const { state, dispatch } = useContext(Context);
-
-	// console.log(state);
 
 	return (
 		<>

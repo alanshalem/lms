@@ -1,11 +1,13 @@
 {
-  "navbar": {
-    "logo": "English",
-    "register": "Register",
-    "login": "Sign in"
-  },
-  "hero": {
-    "title": "English Title",
-    "paragraph": "spanish paragraph"
-  }
+	"navbar": {
+		"logo": "English",
+		"register": "Register",
+		"login": "Sign in",
+		"logout": "Log Out",
+		"welcome": "Welcome"
+	},
+	"hero": {
+		"title": "English Title",
+		"paragraph": "English paragraph"
+	}
 }

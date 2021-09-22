@@ -1,11 +1,13 @@
 {
-  "navbar": {
-    "logo": "Español",
-    "register": "Creá tu cuenta",
-    "login": "Ingresá"
-  },
-  "hero": {
-    "title": "Titulo español",
-    "paragraph": "parrafo español"
-  }
+	"navbar": {
+		"logo": "Español",
+		"register": "Creá tu cuenta",
+		"login": "Ingresá",
+		"logout": "Salir",
+		"welcome": "Bienvenido"
+	},
+	"hero": {
+		"title": "Titulo español",
+		"paragraph": "parrafo español"
+	}
 }
