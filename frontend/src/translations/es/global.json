@@ -9,5 +9,9 @@
 	"hero": {
 		"title": "Titulo español",
 		"paragraph": "parrafo español"
+	},
+	"not-found": {
+		"title": "Estas perdido?",
+		"paragraph": "No encontramos la ruta que nos estas pidiendo."
 	}
 }
