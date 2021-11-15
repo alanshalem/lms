@@ -1,5 +1,9 @@
+//importo cookieParser para usar CSRF
+import cookieParser from 'cookie-parser';
 //importo cors para loggear las request HTTP
 import cors from 'cors';
+//importo csrf para prevenir ataques CROSS-SITE REQUEST FORGERY
+import csrf from 'csurf';
 //importo express para levantar el server HTTP
 import express from 'express';
 //importo la funcion readdirSync fs para cargar las routes
@@ -10,12 +14,6 @@ import mongoose from 'mongoose';
 const morgan = require('morgan');
 //importo dotenv para cargar las variables de entorno
 require('dotenv').config();
-//importo cookieParser para usar CSRF
-import cookieParser from 'cookie-parser';
-//importo csrf para prevenir ataques CROSS-SITE REQUEST FORGERY
-import csrf from 'csurf';
-//importo nodemailer para el envio de mails
-import NodeMailer from 'nodemailer';
 const csrfProtection = csrf({ cookie: true });
 //creo una app express (un server)
 const app = express();
@@ -26,8 +24,8 @@ mongoose
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
-	.then(() => console.log('***DB CONNECTED***'))
-	.catch((error) => console.log(`***DB CONNECTION ERROR => ${error}***`));
+	.then(() => console.log('***DB CONNECTED ✔️***'))
+	.catch((error) => console.log(`***DB CONNECTION ERROR ❌ => ${error}***`));
 
 //aplico middlewares utilizando app.use
 app.use(cors());

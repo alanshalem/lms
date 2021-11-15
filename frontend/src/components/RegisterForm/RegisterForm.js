@@ -110,6 +110,17 @@ const RegisterForm = () => {
 						placeholder="Enter Password"
 						required
 					/>
+					{/* <Label for="password">Repita su contraseña</Label>
+					<Input
+						type="password"
+						name="password"
+						value={password}
+						onChange={(e) => {
+							setPassword(e.target.value);
+						}}
+						placeholder="Enter Password"
+						required
+					/> */}
 					<Button
 					// disabled={
 					// 	!name || !lastname || !email || !password || loading
