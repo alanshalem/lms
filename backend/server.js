@@ -10,7 +10,13 @@ import mongoose from 'mongoose';
 const morgan = require('morgan');
 //importo dotenv para cargar las variables de entorno
 require('dotenv').config();
-
+//importo cookieParser para usar CSRF
+import cookieParser from 'cookie-parser';
+//importo csrf para prevenir ataques CROSS-SITE REQUEST FORGERY
+import csrf from 'csurf';
+//importo nodemailer para el envio de mails
+import NodeMailer from 'nodemailer';
+const csrfProtection = csrf({ cookie: true });
 //creo una app express (un server)
 const app = express();
 
@@ -29,13 +35,22 @@ app.use(cors());
 app.use(express.json());
 //método incorporado en express para reconocer el objeto de solicitud entrante como cadenas o matrices
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(morgan('dev'));
-
 //mapeo todas mis rutas, leo el archivo routes y por cada ruta que exporto hago un app.use
 
 readdirSync('./routes').map((route) => {
 	app.use('/api', require(`./routes/${route}`));
 });
+
+//middleware csrf
+app.use(csrfProtection);
+
+//endpoint csrf
+app.get('/api/csrf-token', (req, res) => {
+	res.json({ csrfToken: req.csrfToken() });
+});
+
 //port
 
 const PORT = process.env.PORT || 8000;

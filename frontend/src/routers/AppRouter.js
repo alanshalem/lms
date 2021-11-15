@@ -11,11 +11,14 @@ import RegisterPage from '../pages/RegisterPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import ProfilePage from '../pages/ProfilePage';
 import DashboardPage from '../pages/DashboardPage';
+import ForgotPasswordPage from '../pages/ForgotPasswordPage';
+
 import PrivateRoute from './PrivateRoute';
 import Footer from '../components/Footer/Footer';
 /*TOASTIFY*/
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserIndex from '../pages/user';
 const AppRouter = ({ theme, toggleTheme }) => {
 	return (
 		<Router>
@@ -36,6 +39,12 @@ const AppRouter = ({ theme, toggleTheme }) => {
 					exact
 					path="/dashboard"
 					component={DashboardPage}
+				/>
+				<Route exact path="/user" component={UserIndex} />
+				<Route
+					exact
+					path="/forgot-password"
+					component={ForgotPasswordPage}
 				/>
 				<Route exact path="/" component={HomePage} />
 				<Route path="*" component={NotFoundPage} />

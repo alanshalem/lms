@@ -2,6 +2,7 @@
 import User from '../models/user';
 import { hashPassword, comparePassword } from '../utils/auth';
 import jwt from 'jsonwebtoken';
+import { nanoid } from 'nanoid';
 
 export const register = async (req, res) => {
 	// res.json('REGISTER USER RESPONSE FROM CONTROLLER');
@@ -93,6 +94,41 @@ export const logout = async (req, res) => {
 		res.clearCookie('token');
 		return res.json({ message: 'SIGNOUT SUCCESS' });
 	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const currentUser = async (req, res) => {
+	try {
+		const user = await User.findById(req.user._id)
+			.select('-password')
+			.exec();
+		console.log(`CURRENT USER ${user}`);
+		return res.json({ ok: true });
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const sendTestEmail = async (req, res) => {
+	console.log('SEND EMAIL');
+	res.json({ ok: true });
+};
+
+export const forgotPassword = async (req, res) => {
+	try {
+		const { email } = req.body;
+		// console.log(email);
+		const shortCode = nanoid(6).toUpperCase();
+		const user = await User.findOneAndUpdate(
+			{ email },
+			{ passwordResetCode: shortCode }
+		);
+		if (!user) return res.status(400).send(`USER NOT FOUND`);
+		//PREPARAMOS PARA EL EMAIL
+		cons;
+	} catch (error) {
+		res.send(`AN ERROR OCURRED`);
 		console.log(error);
 	}
 };

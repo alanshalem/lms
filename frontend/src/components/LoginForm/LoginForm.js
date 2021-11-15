@@ -102,6 +102,10 @@ const LoginForm = () => {
 					<Text>
 						Eres nuevo? <Link to="/register">Registrate!</Link>
 					</Text>
+					<hr />
+					<Text>
+						<Link to="/forgot-password">Olvide mi contraseña</Link>
+					</Text>
 				</Form>
 			</Wrapper>
 		</>

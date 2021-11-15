@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiMoon, BiSun } from 'react-icons/bi';
 import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
+import { ImExit } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 import Arg from '../../assets/img/arg.svg';
 import Uk from '../../assets/img/uk.svg';
@@ -115,7 +116,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 						<>
 							<MenuItem>
 								<MenuItemLink
-									to="/"
+									to="/user"
 									onClick={() =>
 										setShowMobileMenu(!showMobileMenu)
 									}
@@ -134,6 +135,10 @@ const Navbar = ({ theme, toggleTheme }) => {
 										setShowMobileMenu(!showMobileMenu)
 									}
 								>
+									<ImExit
+										size="30"
+										style={{ marginRight: '1rem' }}
+									/>
 									{t('navbar.logout')}
 								</MenuItemLink>
 							</MenuItem>
