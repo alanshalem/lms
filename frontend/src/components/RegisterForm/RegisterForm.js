@@ -30,7 +30,7 @@ const RegisterForm = () => {
 		if (user !== null) {
 			router.push('/');
 		}
-	}, [user]);
+	}, [user, router]);
 
 	// console.log(
 	// 	`LOCALHOST_PUBLIC_API
@@ -122,6 +122,7 @@ const RegisterForm = () => {
 						required
 					/> */}
 					<Button
+					// type="submit"
 					// disabled={
 					// 	!name || !lastname || !email || !password || loading
 					// }

@@ -12,7 +12,9 @@
 
 This project does not have a mongoDB connection setup.
 
--   local development: create a config file (make sure to name it config.js) in the config folder, which exports your db.uri connection. An example is provided, config/config.example.js. This file will be ignored by git so your db credentials will be kept safe when the app is deployed.
+-   To start the proyect for the first time, the only thing you have to do is run these two commands in order
+1- npm install all
+<!-- 2- npm run dev
 
 ## Getting Started
 
@@ -91,4 +93,4 @@ backlogs:
 Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 at register (C:\Users\shalema\Documents\alanshalem\lms\backend\controllers\auth.js:26:30)
 at register (C:\Users\shalema\Documents\alanshalem\lms\backend\controllers\auth.js:46:28)
-3- si necesito tirar los puertos en uso abro cmd como admin y tiro taskkill /F /IM node.exe
+3- si necesito tirar los puertos en uso abro cmd como admin y tiro taskkill /F /IM node.exe -->

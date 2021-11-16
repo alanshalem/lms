@@ -1,11 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { AiOutlineSync } from 'react-icons/ai';
 
 const UserRoute = ({ children }) => {
 	//state
 	const [ok, setOk] = useState(false);
+
+	const LoadingStyles = {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: '5rem',
+	};
 
 	const router = useHistory();
 
@@ -17,7 +24,7 @@ const UserRoute = ({ children }) => {
 		} catch (error) {
 			console.log(error);
 			setOk(false);
-			// router.push('/login');
+			router.push('/login');
 		}
 	};
 
@@ -28,18 +35,9 @@ const UserRoute = ({ children }) => {
 	return (
 		<>
 			{!ok ? (
-				<>{children}</>
+				<AiOutlineSync spin style={LoadingStyles} />
 			) : (
-				{
-					/* <LoadingSpinner
-					className={{
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-						padding: '5',
-					}}
-				/> */
-				}
+				<>{children}</>
 			)}
 		</>
 	);

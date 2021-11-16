@@ -48,7 +48,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 		dispatch({ type: 'LOGOUT' });
 		window.localStorage.removeItem('user');
 		const { data } = await axios.get('/api/logout');
-		toast.success(`LOGIN SUCCESSFUL.`);
+		toast.success(`LOGOUT SUCCESSFUL.`);
 		router.push('/login');
 	};
 

@@ -6,7 +6,6 @@ import { nanoid } from 'nanoid';
 
 export const register = async (req, res) => {
 	// res.json('REGISTER USER RESPONSE FROM CONTROLLER');
-
 	try {
 		console.log(req.body);
 		const { name, lastname, email, password } = req.body;
@@ -56,7 +55,6 @@ export const login = async (req, res) => {
 		// console.log(req.body);
 		const { email, password } = req.body;
 		//validacion
-
 		if (!password || password.length < 6) {
 			return res
 				.status(400)
@@ -73,7 +71,7 @@ export const login = async (req, res) => {
 		const match = await comparePassword(password, user.password);
 
 		const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-			expiresIn: '7d',
+			expiresIn: '1m',
 		});
 		//return user and token to client, exclude hashed password
 		user.password = undefined;

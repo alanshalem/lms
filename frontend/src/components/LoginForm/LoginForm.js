@@ -24,7 +24,7 @@ const LoginForm = () => {
 	const { state, dispatch } = useContext(Context);
 	const { user } = state;
 
-	console.log('STATE', state);
+	// console.log('STATE', state);
 
 	//router
 	const router = useHistory();
@@ -33,7 +33,7 @@ const LoginForm = () => {
 		if (user !== null) {
 			router.push('/');
 		}
-	}, [user]);
+	}, [user, router]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -47,7 +47,7 @@ const LoginForm = () => {
 					password,
 				}
 			);
-			console.log(`LOGIN RESPONSE`, data);
+			// console.log(`LOGIN RESPONSE`, data);
 			dispatch({
 				type: 'LOGIN',
 				payload: data,
@@ -55,8 +55,8 @@ const LoginForm = () => {
 			//save in local storage
 			window.localStorage.setItem('user', JSON.stringify(data));
 			// toast(`LOGIN SUCCESSFUL.`);
-			toast.success(`LOGIN SUCCESSFUL.`);
 			setLoading(false);
+			toast.success(`LOGIN SUCCESSFUL.`);
 			//redirect
 			router.push('/');
 		} catch (error) {

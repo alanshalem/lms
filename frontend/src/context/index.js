@@ -42,24 +42,26 @@ const Provider = ({ children }) => {
 
 		function (error) {
 			//CUALQUIER CODIGO DE STATUS QUE ESTE FUERA DEL RANGO 2XX CAUSA QUE ESTA FUNCION SE DISPARE
-			let res = error.response;
+			let res = error;
+			// let res = error.response;
 			if (
 				res.status === 401 &&
 				res.config &&
 				!res.config.__isRetryRequest
+				// typeof error.response === 'undefined' //RESOLVER ESTE ERROR
 			) {
 				return new Promise((resolve, reject) => {
 					axios
 						.get('/api/logout')
 						.then((data) => {
-							// console.log(`/401 ERROR > LOGOUT`);
-							// dispatch({ type: 'LOGOUT' }); DESCOMENTAR! IMPORTANTE
-							// window.localStorage.removeItem('user'); DESCOMENTAR! IMPORTANTE
+							console.log(`/401 ERROR > LOGOUT`);
+							dispatch({ type: 'LOGOUT' });
+							window.localStorage.removeItem('user');
 							router.push('/login');
 						})
 						.catch((error) => {
 							console.log(`AXIOS INTERCEPTORS ERROR ${error}`);
-							// reject(error);
+							reject(error);
 						});
 				});
 			}

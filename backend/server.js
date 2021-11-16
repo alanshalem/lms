@@ -24,19 +24,20 @@ mongoose
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
-	.then(() => console.log('***DB CONNECTED ✔️***'))
-	.catch((error) => console.log(`***DB CONNECTION ERROR ❌ => ${error}***`));
+	.then(() => console.log('*** DB CONNECTED ✔️ ***'))
+	.catch((error) => console.log(`*** DB CONNECTION ERROR ❌ => ${error}***`));
 
 //aplico middlewares utilizando app.use
+//los middlewares son codigos que corren antes de que cualquier respuesta sea enviada por el servidor
 app.use(cors());
-//express.json() /étodo incorporado en express para reconocer el objeto de solicitud entrante como un objeto JSON. Este metodo se llama, middleware
+//express.json() método incorporado en express para reconocer el objeto de solicitud entrante como un objeto JSON
 app.use(express.json());
 //método incorporado en express para reconocer el objeto de solicitud entrante como cadenas o matrices
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan('dev'));
-//mapeo todas mis rutas, leo el archivo routes y por cada ruta que exporto hago un app.use
 
+//mapeo todas mis rutas, leo el archivo routes y por cada ruta que exporto hago un app.use
 readdirSync('./routes').map((route) => {
 	app.use('/api', require(`./routes/${route}`));
 });
@@ -50,9 +51,8 @@ app.get('/api/csrf-token', (req, res) => {
 });
 
 //port
-
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-	console.log(`***SERVER IS RUNNING ON PORT ${PORT}***`);
+	console.log(`*** SERVER IS RUNNING ON PORT ${PORT} ***`);
 });

@@ -1,16 +1,17 @@
 import express from 'express';
 //controllers
 import {
-	register,
+	currentUser,
+	forgotPassword,
 	login,
 	logout,
-	currentUser,
+	register,
 	sendTestEmail,
-	forgotPassword,
 } from '../controllers/auth';
 //middlewares
 import { requireSignIn } from '../middlewares';
 
+//usamos express Router para crear rutas
 const router = express.Router();
 
 //routes
