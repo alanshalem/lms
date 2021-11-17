@@ -3,6 +3,7 @@ import express from 'express';
 import {
 	currentUser,
 	forgotPassword,
+	resetPassword,
 	login,
 	logout,
 	register,
@@ -21,5 +22,6 @@ router.get('/logout', logout);
 router.get('/current-user', requireSignIn, currentUser);
 router.get('/send-email', sendTestEmail);
 router.post('/forgot-password', forgotPassword);
+router.post('/reset-password', resetPassword);
 
 module.exports = router;

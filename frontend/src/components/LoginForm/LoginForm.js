@@ -10,6 +10,7 @@ import {
 	Input,
 	Label,
 	Text,
+	TextRed,
 	Wrapper,
 } from './LoginForm.elements';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
@@ -103,9 +104,9 @@ const LoginForm = () => {
 						Eres nuevo? <Link to="/register">Registrate!</Link>
 					</Text>
 					<hr />
-					<Text>
+					<TextRed>
 						<Link to="/forgot-password">Olvide mi contraseña</Link>
-					</Text>
+					</TextRed>
 				</Form>
 			</Wrapper>
 		</>

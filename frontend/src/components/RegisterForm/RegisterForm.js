@@ -54,6 +54,9 @@ const RegisterForm = () => {
 			console.log(`REGISTER RESPONSE`, data);
 			// toast(`REGISTRATION SUCCESSFUL. PLEASE LOGIN.`);
 			toast.success(`REGISTRATION SUCCESSFUL. PLEASE LOGIN.`);
+			setName('');
+			setEmail('');
+			setPassword('');
 			setLoading(false);
 		} catch (error) {
 			// toast(error.response.data);

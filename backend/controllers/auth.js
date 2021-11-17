@@ -53,6 +53,43 @@ export const register = async (req, res) => {
 		//guardo el usuario
 		await user.save();
 		console.log(`SAVED USER: ${user}`);
+
+		const params = {
+			Source: process.env.EMAIL_FROM,
+			Destination: {
+				ToAddresses: [email],
+			},
+			ReplyToAddresses: [process.env.EMAIL_FROM],
+			Message: {
+				Body: {
+					Html: {
+						Charset: 'UTF-8',
+						Data: `
+							<html>
+								<h1>Bienvenido!</h1>
+								<p>Gracias por registrarte!</p>
+
+							</html>`,
+					},
+				},
+				Subject: {
+					Charset: 'UTF-8',
+					Data: 'Password Reset Code',
+				},
+			},
+		};
+		const emailSent = SES.sendEmail(params).promise();
+
+		emailSent
+			.then((data) => {
+				console.log(data);
+				return res.json({ ok: true });
+			})
+			.catch((err) => {
+				console.log(err);
+				return res.json({ ok: false });
+			});
+
 		return res.status(200).json({ ok: true });
 	} catch (err) {
 		console.log(err);
@@ -79,6 +116,9 @@ export const login = async (req, res) => {
 		}
 		//chequeo password
 		const match = await comparePassword(password, user.password);
+		if (!match) {
+			return res.status(400).send(`PASSWORD IS INCORRECT`);
+		}
 
 		const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
 			expiresIn: '1m',
@@ -168,8 +208,59 @@ export const forgotPassword = async (req, res) => {
 		);
 		if (!user) return res.status(400).send(`USER NOT FOUND`);
 		//PREPARAMOS PARA EL EMAIL
+		const params = {
+			Source: process.env.EMAIL_FROM,
+			Destination: {
+				ToAddresses: [email],
+			},
+			ReplyToAddresses: [process.env.EMAIL_FROM],
+			Message: {
+				Body: {
+					Html: {
+						Charset: 'UTF-8',
+						Data: `
+							<html>
+								<h1>Reset password link</h1>
+								<p>Por favor, usa este codigo para resetear tu contraseña</p>
+								<h2>${shortCode}</h2>
+							</html>`,
+					},
+				},
+				Subject: {
+					Charset: 'UTF-8',
+					Data: 'Password Reset Code',
+				},
+			},
+		};
+		const emailSent = SES.sendEmail(params).promise();
+
+		emailSent
+			.then((data) => {
+				console.log(data);
+				return res.json({ ok: true });
+			})
+			.catch((err) => {
+				console.log(err);
+				return res.json({ ok: false });
+			});
 	} catch (error) {
 		res.send(`AN ERROR OCURRED`);
 		console.log(error);
+	}
+};
+
+export const resetPassword = async (req, res) => {
+	try {
+		const { email, code, newPassword } = req.body;
+		console.table({ email, code, resetPassword });
+		const hashedPassword = await hashPassword(newPassword);
+		const user = await User.findOneAndUpdate(
+			{ email, passwordResetCode: code },
+			{ password: hashedPassword, passwordResetCode: '' }
+		).exec();
+		res.json({ ok: true });
+	} catch (error) {
+		console.log(error);
+		return res.status(400).send(`ERROR`);
 	}
 };
