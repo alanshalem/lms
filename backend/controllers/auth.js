@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import AWS from 'aws-sdk';
 
 const awsConfig = {
-	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+	accessKeyId: process.env.AWS_ACCESS_KEY,
 	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 	region: process.env.AWS_REGION,
 	apiVersion: process.env.AWS_API_VERSION,
@@ -146,15 +146,15 @@ export const sendTestEmail = async (req, res) => {
 	};
 	const emailSent = SES.sendEmail(params).promise();
 
-	emailSent.then(
-		(data) => {
+	emailSent
+		.then((data) => {
 			console.log(data);
 			return res.json({ ok: true });
-		}
-	).catch((err) => {
-		console.log(err);
-		return res.json({ ok: false });
-	}
+		})
+		.catch((err) => {
+			console.log(err);
+			return res.json({ ok: false });
+		});
 };
 
 export const forgotPassword = async (req, res) => {
