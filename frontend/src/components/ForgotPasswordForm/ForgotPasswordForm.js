@@ -29,7 +29,7 @@ const ForgotPasswordForm = () => {
 	//redirigir si el usuario esta logueado
 	useEffect(() => {
 		if (user !== null) router.push('/');
-	}, []);
+	}, [user]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
